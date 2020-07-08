@@ -1,0 +1,33 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m0",
+    "extra_flags": "-DSTM32F070x6 -DSTM32F0",
+    "f_cpu": "48000000L",
+    "mcu": "stm32f070f6p6",
+    "product_line": "STM32F070x6",
+    "variant": "genericSTM32F030F4"
+  },
+  "debug": {
+    "jlink_device": "STM32F070F6",
+    "openocd_target": "stm32f0x",
+    "svd_path": "STM32F0xx.svd"
+  },
+  "frameworks": [
+    "arduino",
+    "cmsis",
+    "stm32cube"
+  ],
+  "name": "STM32F070F6P6",
+  "upload": {
+    "maximum_ram_size": 6144,
+    "maximum_size": 32768,
+    "protocol": "serial",
+    "protocols": [
+      "stlink",
+			"serial"
+    ]
+  },
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f103c4.html",
+  "vendor": "Generic"
+}
