@@ -5,7 +5,8 @@
 
 #define BOAD 500000
 
-#define LED_ON  GPIOA->BSRR = GPIO_BSRR_BR_4
-#define LED_OFF GPIOA->BSRR = GPIO_BSRR_BS_4
+#define LED_ON  TIM14->CCR1 = 1000
+#define LED_OFF TIM14->CCR1 = 0
+#define LED(a)  TIM14->CCR1 = a
 
 void sysInit();
