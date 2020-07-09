@@ -6,7 +6,7 @@
     "f_cpu": "48000000L",
     "mcu": "stm32f070f6p6",
     "product_line": "STM32F070x6",
-    "variant": "genericSTM32F030F4"
+    "variant": "genericSTM32F070F6Px"
   },
   "debug": {
     "jlink_device": "STM32F070F6",
@@ -22,12 +22,12 @@
   "upload": {
     "maximum_ram_size": 6144,
     "maximum_size": 32768,
-    "protocol": "serial",
+    "protocol": "stlink",
     "protocols": [
       "stlink",
 			"serial"
     ]
   },
-  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f103c4.html",
+  "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32f070f6.html",
   "vendor": "Generic"
 }
