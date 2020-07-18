@@ -2,12 +2,27 @@
 #include "usb.h"
 
 void rccInit(){
-    RCC->AHBENR |= RCC_AHBENR_GPIOAEN | RCC_AHBENR_GPIOBEN;
-    RCC->APB1ENR |= RCC_APB1ENR_USART2EN | RCC_APB1ENR_TIM14EN | RCC_APB1ENR_USBEN;
-    RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+    FLASH->ACR = FLASH_ACR_PRFTBE | FLASH_ACR_LATENCY;
+
+    RCC->CR = RCC_CR_HSEON;
+    while (!(RCC->CR & RCC_CR_HSERDY));
+
+    RCC->CFGR = RCC_CFGR_PLLSRC_HSE_PREDIV | RCC_CFGR_PLLMUL4;
+
+    RCC->CR |= RCC_CR_PLLON;
+    while (!(RCC->CR & RCC_CR_PLLRDY));
+
+    RCC->CFGR |= RCC_CFGR_SW_PLL;
+    while((RCC->CFGR & RCC_CFGR_SWS)!= RCC_CFGR_SWS_PLL);
+
     RCC->CFGR3 |= RCC_CFGR3_USBSW;
 
+    RCC->AHBENR |= RCC_AHBENR_GPIOAEN | RCC_AHBENR_GPIOBEN;
+    RCC->APB1ENR |= RCC_APB1ENR_USART2EN | RCC_APB1ENR_TIM14EN;
+    RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+    
     SYSCFG->CFGR1 |= SYSCFG_CFGR1_PA11_PA12_RMP;
+    RCC->APB1ENR |= RCC_APB1ENR_USBEN;
 }
 
 void gpioInit(){
@@ -49,7 +64,7 @@ void sysInit(){
     gpioInit();
     tim14Init();
     uartInit();
-    //usbInit();
+    usbInit();
     SysTick_Config(F_CPU/100);
 }
 

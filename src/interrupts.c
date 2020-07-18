@@ -10,6 +10,6 @@ void SysTick_Handler(void) {
         sec_d=0;
         sec++;
     }
-    if(sec%2)LED(sec_d*10);
-    else LED(1000-sec_d*10);
+    //if(sec%2)LED(sec_d*10);
+    //else LED(1000-sec_d*10);
 }

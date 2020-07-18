@@ -7,6 +7,7 @@
 
 #define LED_ON  TIM14->CCR1 = 1000
 #define LED_OFF TIM14->CCR1 = 0
+#define LED_TOG if(TIM14->CCR1)LED_OFF;else LED_ON
 #define LED(a)  TIM14->CCR1 = a
 
 void sysInit();
