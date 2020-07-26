@@ -3,7 +3,7 @@
 #include "stm32f0xx.h"
 #include "xprintf.h"
 
-#define BOAD 500000
+#define BOAD 2000000
 
 #define LED_ON  TIM14->CCR1 = 1000
 #define LED_OFF TIM14->CCR1 = 0
